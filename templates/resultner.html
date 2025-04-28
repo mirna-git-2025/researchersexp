@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entity Recognition Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Result</h2>
+        <p class="message">{{ message }}</p>
+        <a href="{{ url_for('static', filename='/nerresult/medical_entities_with_filenames.xlsx') }}" >📥 NER Result Download</a> <br> 
+		<a href="{{ url_for('static', filename='nerresult/medical_entities_with_filenames.xlsx') }}">
+			📂 Open NER Result
+		</a><br>
+
+
+        <a href="/" class="button">Back to Home</a>
+    </div>
+</body>
+</html>

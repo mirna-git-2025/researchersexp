@@ -1,0 +1,60 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submission Successful</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom right, #0a0f7d, #2575fc);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: white;
+        }
+        .container {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            width: 420px;
+        }
+        h2 {
+            color: #0a0f7d;
+        }
+        .info {
+            font-size: 18px;
+            color: #333;
+            margin: 10px 0;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 22px;
+            margin-top: 15px;
+            background: linear-gradient(to right, #0a0f7d, #2575fc);
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            background: linear-gradient(to right, #080c6d, #1c5cd3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Data Submitted Successfully 🎉</h2>
+        <p class="info"><strong>Researcher:</strong> {{ researcher_data.researcher }}</p>
+        <p class="info"><strong>Email:</strong> {{ researcher_data.email }}</p>
+        <p class="info"><strong>Experience:</strong> {{ researcher_data.experience }} years</p>
+        <a href="/" class="btn">Submit Another</a>
+    </div>
+</body>
+</html>

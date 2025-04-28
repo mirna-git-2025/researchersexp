@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Researcher Experiences</title>
+    <link rel="stylesheet" 
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" 
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #004080;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            position: relative;
+        }
+
+        .logos {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+.container {
+    display: flex;
+    justify-content: space-between; /* Moves buttons to the far right */
+    align-items: center;
+    padding: 20px;
+    background: #eef5ff;
+    border-radius: 15px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    position: relative;  /* Needed for absolute positioning */
+    margin-top: 5px;
+
+
+}
+
+.welcome-text {
+    flex: 1;
+    padding: 20px;
+    background: #d0e6ff;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Ensures spacing between buttons */
+    right: -20px; 
+}
+
+.btn {
+    width: 150px;
+    padding: 10px;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: left;
+}
+
+.btn-login { background: #007bff; }
+.btn-register { background: #28a745; }
+.btn-logout { background: #dc3545; }
+        .logos img {
+            height: 50px;
+        }
+
+        .title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-top: 5px;
+            text-transform: uppercase;
+        }
+
+       
+                    
+        nav {
+            display: flex;
+            justify-content: center;
+            margin: 10px 0;
+            gap: 15px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            background-color: #0073e6;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        nav a:hover {
+            background-color: #005bb5;
+            transform: scale(1.1);
+        }
+
+        footer {
+            background-color: #004080;
+            color: white;
+            text-align: center;
+            padding: 5px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+       .alert {
+            font-size: 14px; /* Adjust this value as needed */
+            padding: 10px 10px; /* Adjust the padding to make the message more compact */
+            margin-bottom: 10px; /* Space between flash messages */
+        }
+
+        /* Optional: You can customize the alert color for specific types */
+        .alert-success {
+            background-color: #d4edda; /* Light green */
+            color: #155724; /* Dark green */
+        }
+
+        .alert-danger {
+            background-color: #f8d7da; /* Light red */
+            color: #721c24; /* Dark red */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logos">
+            <img src="static/edst.png" alt="University Logo">
+            <img src="static/logolia.jpg" alt="Lab Logo 1">
+        </div>
+        <div class="title">Research Experiences Finder</div>
+        <nav>
+            <a href="/form">Add Experience</a>
+            <a href="/search">Search Experience</a>
+            <a href="/semanticsearch">Semantic Search Experience</a>
+             <a href="/run_entity_recognition">Run Recognition</a>
+             <a href="{{ url_for('generate_questions') }}"> 🧠 Generate Questions    </a>
+            <a href="{{ url_for('send_email') }}">Go to Email Form</a>
+        </nav>
+    </header>
+ {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul>
+                {% for category, message in messages %}
+                    <li class="alert alert-{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+  
+    
+    <div class="container">
+    <div class="welcome-text">
+	{% if email %}
+           <h1>Welcome, {{ email }} to the Researcher Experience Platform!</h1>
+        {% else %}
+           <h1>Welcome  to the Researcher Experience Platform!</h1>
+           <p>Please log in to access your account.</p>
+        {% endif %}      
+        
+        <p><strong>Explore inspiring stories</strong> of successful research journeys, share your knowledge, and connect with others in the research community.</p>
+    </div> &nbsp; &nbsp; &nbsp;
+
+
+    <div class="buttons">
+        <button class="btn btn-login" onclick="window.location.href='{{ url_for('login') }}'">🔑 Login</button>
+		<button class="btn btn-register" onclick="window.location.href='{{ url_for('register') }}'">➕ Register</button>
+		<button class="btn btn-logout" onclick="window.location.href='{{ url_for('logout') }}'">🔄 Logout</button>
+    </div>
+</div>
+<br>
+    <footer>
+        &copy; 2025 Research Experiences Finder. All rights reserved.<br> Developed by Mirna Mokhtar <br>
+        (<a href="mailto:mirna.mokhtar@edst.edu.lb" style="color: white;">mirna.mokhtar@edst.edu.lb</a>).
+    </footer>
+</body>
+</html>

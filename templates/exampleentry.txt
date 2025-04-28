@@ -1,0 +1,17 @@
+{
+    "_id": ObjectId("65b12345abc6789def012345"),
+    "researcher": "Dr. John Doe",
+    "title": "Machine Learning in Microbiology",
+    "summary": "Using AI to predict bacterial resistance...",
+    "start_date": "2025-01-01",
+    "end_date": "2025-12-31",
+    "attributes": {
+        "field": "Bioinformatics",
+        "methods": ["Deep Learning", "Statistical Analysis"],
+        "tools": ["TensorFlow", "Scikit-learn"]
+    },
+    "files": [
+        {"filename": "paper.pdf"},
+        {"filename": "results.csv"}
+    ]
+}

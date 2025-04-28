@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Experiences</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+
+            background-color: #004080;
+            text-align: center;
+        }
+
+        .header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .logos {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .logos img {
+            height: 50px;
+        }
+
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: auto;
+
+        }
+
+        h1 {
+            font-size: 28px;
+            color: #333;
+                       
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        input[type="text"] {
+            width: 50%;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        button {
+            padding: 12px 20px;
+            font-size: 16px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+      footer {
+            background-color: #004080;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header with Two Logos -->
+       <!-- Search Section -->
+    <div class="container">
+        <div class="logos">
+            <img src="static/edst.png" alt="EDST Logo">
+            <img src="static/logolia.jpg" alt="lia Logo">
+                        
+
+        </div>
+  
+        <h1>Search Researcher Experiences</h1>
+        <form action="/search" method="POST">
+            <input type="text" name="query" placeholder="Search by title, summary, method, or tool" required>
+            <button type="submit">Search</button>
+        </form>
+    </div>
+<footer>
+        &copy; 2025 Researchers Experiences. All rights reserved.<br> Developed by Mirna Mokhtar <br>(<a href="mailto:mirna.mokhtar@edst.edu.lb">mirna.mokhtar@edst.edu.lb</a>).
+    </footer>
+</body>
+</html>

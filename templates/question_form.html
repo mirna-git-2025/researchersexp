@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generate Questions</title>
+</head>
+<body>
+    <h2>🧾 Paste your text or summary</h2>
+
+    <form method="POST">
+        <textarea name="text" rows="10" cols="100" placeholder="Enter your research summary or paragraph..."></textarea><br><br>
+        <button type="submit">Generate</button>
+    </form>
+
+    {% if questions %}
+        <h3>✅ Generated Questions:</h3>
+        <ul>
+            {% for q in questions %}
+                <li>{{ q }}</li>
+            {% endfor %}
+        </ul>
+
+        {% if file_link %}
+            <p>
+                📥 <a href="{{ url_for('static', filename=file_link.split('static/')[1]) }}" target="_blank" download>
+                    Download Questions (Excel)
+                </a>
+            </p>
+        {% endif %}
+    {% endif %}
+</body>
+</html>

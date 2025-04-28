@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experience Detail</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #004080;
+            text-align: center;
+        }
+         footer {
+            background-color: #004080;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+
+        .header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .logos {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .logos img {
+            height: 50px;
+        }
+
+
+        .container {
+            background: white;
+            width: 60%;
+            margin: 40px auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        h1 {
+            font-size: 26px;
+            text-align: center;
+            color: #333;
+        }
+
+        p {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            background: #fafafa;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        a {
+            text-decoration: none;
+            color: #007BFF;
+            font-weight: bold;
+        }
+
+        a:hover {
+            color: #0056b3;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header with Two Logos -->
+        <!-- Experience Detail Section -->
+    <div class="container">
+        <div class="logos">
+           <img src="{{ url_for('static', filename='edst.png') }}" alt="EDST Logo">
+           <img src="{{ url_for('static', filename='logolia.jpg') }}" alt="LIA Logo">
+
+        </div>
+
+
+        <h1>Experience Detail</h1>
+        <p><strong>Researcher:</strong> {{ experience.researcher }}</p>
+        <p><strong>Email:</strong> {{ experience.email }}</p>
+ 	<p><strong>Title:</strong> {{ experience.title }}</p>
+
+        <p><strong>Summary:</strong> {{ experience.summary }}</p>
+        <p><strong>Start Date:</strong> {{ experience.start_date }}</p>
+        <p><strong>End Date:</strong> {{ experience.end_date }}</p>
+
+        {% if experience.attributes %}
+            <p><strong>Field:</strong> {{ experience.attributes.field }}</p>
+            <p><strong>Methods:</strong> {{ experience.attributes.methods | join(', ') }}</p>
+            <p><strong>Tools:</strong> {{ experience.attributes.tools | join(', ') }}</p>
+            <p><strong>Years of Experience:</strong> {{ experience.attributes.years_of_experience }}</p>
+
+            {% if experience.attributes.files %}
+                <h2>Files</h2>
+                <ul>
+                    {% for file in experience.attributes.files %}
+                        <li>
+                            {% set file_path = file.path.replace('\\', '/') %}
+                            {% if file_path.endswith('.pdf') %}
+                                <a href="{{ url_for('static', filename=file_path[7:]) }}" target="_blank">{{ file.filename }}</a>
+                            {% elif file_path.endswith(('.png', '.jpg', '.jpeg', '.gif')) %}
+                                <p>{{ file.filename }}</p>  
+                                <img src="{{ url_for('static', filename=file_path[7:]) }}" alt="{{ file.filename }}" width="200">
+                            {% else %}
+                                <a href="{{ url_for('static', filename=file_path[7:]) }}" download>{{ file.filename }}</a>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endif %}
+
+        <a href="{{ url_for('search') }}" class="back-button">Back to Search</a>
+    </div>
+<footer>
+        &copy; 2025 Researchers Experiences. All rights reserved.<br> Developed by Mirna Mokhtar <br>(<a href="mailto:mirna.mokhtar@edst.edu.lb">mirna.mokhtar@edst.edu.lb</a>).
+    </footer>
+</body>
+</html>

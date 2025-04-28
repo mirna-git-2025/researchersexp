@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ experience.title }} - Experience Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #004080;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: auto;
+        }
+
+        /* Logos Section */
+        .logos {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .logos img {
+            height: 50px;
+        }
+
+        /* Title Section */
+        .title-section {
+            background-color: #007BFF;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .title-section h1 {
+            margin: 0;
+            font-size: 24px;
+            animation: shine 2s ;
+        }
+
+        @keyframes shine {
+            0% {
+                text-shadow: 0 0 5px #00f, 0 0 10px #00f, 0 0 20px #00f, 0 0 40px #007BFF, 0 0 80px #007BFF, 0 0 90px #007BFF;
+            }
+            100% {
+                text-shadow: 0 0 5px #ff0, 0 0 10px #ff0, 0 0 20px #ff0, 0 0 40px #ffcc00, 0 0 80px #ffcc00, 0 0 90px #ffcc00;
+            }
+        }
+
+        /* Data Section */
+        .data-section {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .data-section p {
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        .data-section p strong {
+            color: #007BFF;
+        }
+
+        /* File Section */
+        .files-section {
+            margin-top: 30px;
+        }
+
+        .files-section h2 {
+            text-align: center;
+            background-color: #007BFF; /* New color for uploaded files title */
+            color: white;
+            padding: 10px;
+            font-size: 18px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+        }
+
+        .files-section ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .files-section li {
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .files-section img {
+            width: 200px;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .files-section a {
+            text-decoration: none;
+            color: #007BFF;
+            font-weight: bold;
+        }
+
+        .files-section a:hover {
+            text-decoration: underline;
+        }
+
+        /* Back link */
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 16px;
+            color: #007BFF;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Logos Section -->
+    <div class="logos">
+        <img src="{{ url_for('static', filename='edst.png') }}" alt="EDST Logo">
+        <img src="{{ url_for('static', filename='logolia.jpg') }}" alt="lia Logo">
+      
+    </div>
+
+    <!-- Title Section -->
+    <div class="title-section">
+        <h1>{{experience.summary}} : Experience Detail</h1>
+    </div>
+
+    <!-- Data Section -->
+    <div class="data-section">
+        <p><strong>Researcher:</strong> {{ experience.researcher }}</p>
+        <p><strong>Email:</strong> {{ experience.email }}</p>
+        <p><strong>Summary:</strong> {{ experience.summary }}</p>
+        <p><strong>Start Date:</strong> {{ experience.start_date }}</p>
+        <p><strong>End Date:</strong> {{ experience.end_date }}</p>
+        <p><strong>Field:</strong> {{ experience.attributes.field }}</p>
+        <p><strong>Methods:</strong> {{ experience.attributes.methods | join(', ') }}</p>
+        <p><strong>Tools:</strong> {{ experience.attributes.tools | join(', ') }}</p>
+        <p><strong>Years of Experience:</strong> {{ experience.attributes.years_of_experience }}</p>
+    </div>
+
+    <!-- Files Section -->
+    <div class="files-section">
+        <h2>Uploaded Files</h2>
+        <ul>
+            {% for file in files %}
+                <li>
+                    {% if file.endswith('.jpeg') or file.endswith('.jpg') or file.endswith('.png') %}
+                         <p>{{ file }}</p>
+                        <img src="/static/experiences/{{ experience_name }}/{{ file }}" alt="{{ file }}">
+                    {% elif file.endswith('.pdf') %}
+                        <a href="/static/experiences/{{ experience_name }}/{{ file }}" target="_blank">{{ file }}</a>
+                    {% else %}
+                        <p>{{ file }}</p>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <a href="{{ url_for('index') }}" class="back-link">Back to all experiences</a>
+</div>
+
+</body>
+</html>

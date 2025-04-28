@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ experience.title }} - Experience Details</title>
+    <style>         body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: auto;
+        }
+        h1 {
+            color: #333;
+            font-size: 18px; /* Change font size */
+        }
+              .logos {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .logos img {
+            height: 50px;
+        }
+
+
+        .back-link {
+            margin-top: 15px;
+            display: block;
+            color: #007BFF;
+            text-decoration: none;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+
+</head>
+<body>
+     <form> 		
+     <div class="container">
+        <!-- Logos Section -->
+        <div class="logos">
+            <img src="{{ url_for('static', filename='edst.png') }}" alt="EDST Logo">
+            <img src="{{ url_for('static', filename='logolia.jpg') }}" alt="lia Logo">
+            <img src="{{ url_for('static', filename='newlmselogo.png') }}" alt="LMSE Logo">
+            
+        </div>
+
+     <h1>Details for the experience: {{ experience_name }}</h1>
+     <h1>{{ experience.title }}</h1>
+    <p><strong>Researcher:</strong> {{ experience.researcher }}</p>
+    <p><strong>Email:</strong> {{ experience.email }}</p>
+    <p><strong>Summary:</strong> {{ experience.summary }}</p>
+    <p><strong>Start Date:</strong> {{ experience.start_date }}</p>
+    <p><strong>End Date:</strong> {{ experience.end_date }}</p>
+    <p><strong>Field:</strong> {{ experience.attributes.field }}</p>
+    <p><strong>Methods:</strong> {{ experience.attributes.methods | join(',      ') }}</p>
+    <p><strong>Tools:</strong> {{ experience.attributes.tools | join(', ') }}</p>
+    <p><strong>Years of Experience:</strong> {{ experience.attributes.years_of_experience }}</p>
+  
+
+     <ul>
+        {% for file in files %}
+        <li>
+            {% if file.endswith('.jpeg') or file.endswith('.jpg') or file.endswith('.png') %}
+                 <p>{{ file }}</p>
+                <img src="/static/experiences/{{ experience_name }}/{{ file }}" alt="{{ file }}" width="200">
+            {% elif file.endswith('.pdf') %}
+                <a href="/static/experiences/{{ experience_name }}/{{ file }}" target="_blank">{{ file }}</a>
+            {% else %}
+                <p>{{ file }}</p>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+   </div>
+</form>
+</body>
+</html>

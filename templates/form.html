@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Researcher Data Submission</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+           background-color: #004080;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 250vh;
+            color: #fff;
+        }
+       footer {
+            background-color: #004080;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+
+        .form-container {
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            padding: 30px 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            max-width: 550px;
+            width: 100%;
+            text-align: center;
+            transition: 0.3s ease-in-out;
+        }
+
+        .form-container:hover {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .logos {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .logos img {
+            height: 50px;
+            filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2));
+        }
+
+        h1 {
+            font-size: 28px;
+            color: #2e3192;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        p.tagline {
+            font-size: 16px;
+            color: #e63946;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .form-container label {
+            display: block;
+            text-align: left;
+            font-weight: 600;
+            margin: 10px 0 5px;
+            color: #444;
+        }
+
+        .form-container input[type="text"], 
+        .form-container input[type="email"],
+        .form-container input[type="number"],
+        .form-container input[type="date"],
+        .form-container textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+            transition: 0.3s ease-in-out;
+        }
+
+        .form-container textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-container input:focus, 
+        .form-container textarea:focus {
+            border-color: #2e3192;
+            box-shadow: 0 0 8px rgba(46, 49, 146, 0.3);
+        }
+
+        .checkbox-group, .tools-group {
+            text-align: left;
+            margin-bottom: 15px;
+        }
+
+        .form-container input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(to right, #2e3192, #1b42b2);
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s ease-in-out;
+        }
+
+        .form-container input[type="submit"]:hover {
+            background: linear-gradient(to right, #1b42b2, #0e1f64);
+        }
+
+        .form-container input[type="file"] {
+            padding: 8px;
+            border: 2px dashed #aaa;
+            background: #f8f9fa;
+            width: 100%;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+        }
+
+        .form-container input[type="file"]:hover {
+            border-color: #2e3192;
+        }
+
+        .back-link {
+            display: block;
+            margin-top: 15px;
+            text-decoration: none;
+            color: #1b42b2;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+            color: #0e1f64;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <!-- Logos Section -->
+        <div class="logos">
+            <img src="static/edst.png" alt="EDST Logo">
+            <img src="static/logolia.jpg" alt="LIA Logo">
+        </div>
+
+        <!-- Title -->
+        <h1>Researcher Data Submission</h1>
+
+        <!-- Tagline -->
+        <p class="tagline">Shape the Future with Your Expertise</p>
+
+        <!-- Form -->
+        <form action="/submit_researcher" method="post" enctype="multipart/form-data">
+            <label for="researcher">Researcher Name:</label>
+            <input type="text" id="researcher" name="researcher" placeholder="Enter your full name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+
+            <label for="years_of_experience">Years of Experience:</label>
+            <input type="number" id="years_of_experience" name="years_of_experience" min="0" required>
+
+            <label for="title">Research Title:</label>
+            <input type="text" id="title" name="title" required>
+
+            <label for="summary">Summary:</label>
+            <textarea id="summary" name="summary" required></textarea>
+
+            <label for="start_date">Start Date:</label>
+            <input type="date" id="start_date" name="start_date" required>
+
+            <label for="end_date">End Date:</label>
+            <input type="date" id="end_date" name="end_date" required>
+
+            <label for="field">Research Field:</label>
+            <input type="text" id="field" name="field" required>
+
+            <label>Methods (Select all that apply):</label>
+            <div class="checkbox-group">
+                <input type="checkbox" name="methods" value="Deep Learning"> Deep Learning<br>
+                <input type="checkbox" name="methods" value="Statistical Analysis"> Statistical Analysis<br>
+                <input type="checkbox" name="methods" value="Machine Learning"> Machine Learning
+            </div>
+
+            <label>Tools (Select all that apply):</label>
+            <div class="tools-group">
+                <input type="checkbox" name="tools" value="TensorFlow"> TensorFlow<br>
+                <input type="checkbox" name="tools" value="Scikit-learn"> Scikit-learn
+            </div>
+
+            <label for="files">Upload Files (Images, PDFs, Videos):</label>
+            <input type="file" id="files" name="files" multiple>
+
+            <input type="submit" value="Submit">
+        </form>
+
+        <a href="/" class="back-link">← Back to Home</a>
+    </div>
+</body>
+</html>
