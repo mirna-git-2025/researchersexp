@@ -1,0 +1,13 @@
+Flask
+Flask-PyMongo
+pymongo
+Flask-Mail
+Flask-Session
+Flask-Bcrypt
+torch
+transformers
+scikit-learn
+pandas
+spacy
+scispacy
+en_ner_bc5cdr_md @ https://github.com/kormilitzin/en_ner_bc5cdr_md/releases/download/en_ner_bc5cdr_md-0.0.1/en_ner_bc5cdr_md-0.0.1-py3-none-any.whl
