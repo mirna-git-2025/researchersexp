@@ -1,0 +1,13 @@
+Flask
+Flask-PyMongo
+pymongo
+Flask-Mail
+Flask-Session
+Flask-Bcrypt
+torch
+transformers
+scikit-learn
+pandas
+spacy
+scispacy
+gdown==4.6.0  # Add gdown for downloading the model
