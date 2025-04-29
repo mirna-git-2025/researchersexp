@@ -1,0 +1,11 @@
+Flask
+Flask-PyMongo
+pymongo
+Flask-Mail
+Flask-Session
+Flask-Bcrypt
+torch
+transformers
+scikit-learn
+pandas
+gunicorn
